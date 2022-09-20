@@ -48,10 +48,69 @@ console.log('array of employee data: ',  employees );
 
 // This function will calculate 1 employee's bonus!
 //
-function calculateIndividualEmployeeBonus( employee ) {  
+function calculateIndividualEmployeeBonus( employee ) { 
+  let results;
+  let bonus = {
+    bonusPercentageThree: 0,
+    bonusPercentageFour: 0,
+    bonusPercentageFive: 0
+  };
   // your logic here
-  
-  
+    for (let worker of employee){
+      if(worker.reviewRating <= 2){
+      console.log(`Worker ${worker.name} is not eligble for a bonus`);
+      }
+      else if(worker.reviewRating === 3){
+        /*bonus = {
+          bonusPercentageThree: 0
+        };*/
+      console.log(`Worker ${worker.name} will recieve a 4% bonus`);
+      bonus.bonusPercentageThree += 4; 
+        if (worker.employeeNumber.length === 4){
+          console.log('Thank you for your work, take a 5% extra to your bonus');
+          bonus.bonusPercentageThree += 5;
+          if(worker.annualSalary > 65000){
+          console.log('You make too much! We are dropping your bonus by 1%');
+          bonus.bonusPercentageThree -= 1;
+            if(bonus.bonusPercentageThree > 13){
+              console.log('Employees cannot have more than a 13% bonus');
+              bonus.bonusPercentageThree = 13;
+            }
+          }
+        }
+      }
+      else if(worker.reviewRating === 4){
+        /*bonus = {
+          bonusPercentageFour: 0
+        };*/
+      console.log(`Worker ${worker.name} will recieve a 6% bonus`);
+      bonus.bonusPercentageFour += 6; 
+        if (worker.employeeNumber.length === 4){
+        console.log('Thank you for your work, take a 5% extra to your bonus');
+        bonus.bonusPercentageFour += 5;
+          if(worker.annualSalary > 65000){
+          console.log('You make too much! We are dropping your bonus by 1%');
+          bonus.bonusPercentageFour -= 1;
+            if(bonus.bonusPercentageFour > 13){
+              console.log('Employees cannot have more than a 13% bonus');
+              bonus.bonusPercentageFour = 13;
+          }
+        }
+      }
+      else if(worker.reviewRating === 5){
+      console.log(`Worker ${worker.name} will recieve a 10% bonus`);
+        if (worker.employeeNumber.length === 4){
+        console.log('Thank you for your work, take a 5% extra to your bonus');
+          if(worker.annualSalary > 65000){
+            console.log('You make too much! We are dropping your bonus by 1%');
+          }
+        }
+      }
+    };
+  };
   // return new object with bonus results
+  console.log(bonus.bonusPercentageThree);
+  console.log(bonus.bonusPercentageFour);
+};
 
-}
+console.log(calculateIndividualEmployeeBonus(employees));
